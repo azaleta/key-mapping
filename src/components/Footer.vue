@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { isDark, toggleDark } from '~/composables'
+
 </script>
 
 <template>
@@ -10,12 +10,8 @@ import { isDark, toggleDark } from '~/composables'
     </button>
 
     <a
-      class="icon-btn"
-      i-carbon-logo-github
-      rel="noreferrer"
-      href="https://github.com/antfu/vitesse-lite"
-      target="_blank"
-      title="GitHub"
+      class="icon-btn" i-carbon-logo-github rel="noreferrer" href="https://https://github.com/azaleta/key-mapping"
+      target="_blank" title="GitHub"
     />
   </nav>
 </template>
