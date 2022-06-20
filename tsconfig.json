@@ -22,7 +22,7 @@
       "vite-plugin-pages/client"
     ],
     "paths": {
-      "~/*": [
+      "@/*": [
         "src/*"
       ]
     }
