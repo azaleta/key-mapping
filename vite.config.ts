@@ -33,6 +33,7 @@ export default defineConfig({
       dts: true,
       dirs: [
         './src/composables/',
+        './src/composables/keyboard/',
       ],
       vueTemplate: true,
     }),
@@ -44,7 +45,14 @@ export default defineConfig({
 
     // https://github.com/antfu/unocss
     // see unocss.config.ts for config
-    Unocss(),
+    Unocss(
+      {
+        shortcuts: {
+          'key-hover-base': 'hover-bg-sky500/50 dark:hover-bg-sky500',
+          'key-active-base': 'bg-sky500/50 dark:bg-sky500',
+        },
+      },
+    ),
   ],
 
   // https://github.com/vitest-dev/vitest

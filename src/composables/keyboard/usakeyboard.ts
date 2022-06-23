@@ -1,6 +1,6 @@
 import { KEYBOARD, KEYBOARD_KEY, type KEY_ROW, type KEY_VALUE } from './keyboard'
 
-const line1 = [
+const line1: KEY_VALUE[] = [
   ['\`', '~'],
   ['1', '!'],
   ['2', '@'],
@@ -17,7 +17,7 @@ const line1 = [
   'Backspace',
 ]
 
-const line2 = [
+const line2: KEY_VALUE[] = [
   'Tab',
   'Q',
   'W',
@@ -34,7 +34,7 @@ const line2 = [
   ['\\', '|'],
 ]
 
-const line3 = [
+const line3: KEY_VALUE[] = [
   'CapsLock',
   'A',
   'S',
@@ -50,8 +50,8 @@ const line3 = [
   'Enter',
 ]
 
-const line4 = [
-  'Shift',
+const line4: KEY_VALUE[] = [
+  'ShiftLeft',
   'Z',
   'X',
   'C',
@@ -62,13 +62,13 @@ const line4 = [
   [',', '<'],
   ['.', '>'],
   ['/', '?'],
-  'Shift',
+  'ShiftRight',
 ]
 
-const keyRow1: KEY_ROW = line1.map(k => new KEYBOARD_KEY(k as KEY_VALUE))
-const keyRow2: KEY_ROW = line2.map(k => new KEYBOARD_KEY(k as KEY_VALUE))
-const keyRow3: KEY_ROW = line3.map(k => new KEYBOARD_KEY(k as KEY_VALUE))
-const keyRow4: KEY_ROW = line4.map(k => new KEYBOARD_KEY(k as KEY_VALUE))
+const keyRow1: KEY_ROW = line1.map(k => new KEYBOARD_KEY(k))
+const keyRow2: KEY_ROW = line2.map(k => new KEYBOARD_KEY(k))
+const keyRow3: KEY_ROW = line3.map(k => new KEYBOARD_KEY(k))
+const keyRow4: KEY_ROW = line4.map(k => new KEYBOARD_KEY(k))
 
 export const USA_KEYBOARD = new KEYBOARD([
   keyRow1,

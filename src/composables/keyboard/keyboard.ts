@@ -5,7 +5,9 @@ const NUMBER_KEY_CONST = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as c
 const SYMBOL_KEY_CONST = ['`', '~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '[', '{', ']', '}', '\\', '|', ';', ':', '\'', '"', ',', '<', '.', '>', '/', '?'] as const
 
 // Chg is a special key in JP IME
-const FUNC_KEY_CONST = ['Esc', 'Tab', 'Quote', 'Backspace', 'Enter', 'Shift', 'Ctrl', 'Alt', 'Space', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'PageUp', 'PageDown', 'End', 'Home', 'Insert', 'Delete', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Fn', 'Win', 'Chg'] as const
+const SPECIAL_KEY_CONST = ['Chg'] as const
+
+const FUNC_KEY_CONST = ['Esc', 'Tab', 'Quote', 'Backspace', 'Enter', 'ShiftLeft', 'ShiftRight', 'Ctrl', 'Alt', 'Space', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'PageUp', 'PageDown', 'End', 'Home', 'Insert', 'Delete', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'Fn', 'Win', 'CapsLock'] as const
 
 export type ALPHA_KEY = typeof ALPHA_KEY_CONST[number]
 
@@ -16,10 +18,12 @@ export type SYMBOL_KEY = typeof SYMBOL_KEY_CONST[number]
 
 export type FUNC_KEY = typeof FUNC_KEY_CONST[number]
 
+export type SPECIAL_KEY = typeof SPECIAL_KEY_CONST[number]
+
 // NUMBER,SYMBL should all be shiftable
 export type SHIFTABLE_KEY = NUMBER_KEY | SYMBOL_KEY
 
-export type KEY_TYPE = ALPHA_KEY | FUNC_KEY | SHIFTABLE_KEY
+export type KEY_TYPE = ALPHA_KEY | FUNC_KEY | SHIFTABLE_KEY | SPECIAL_KEY
 
 export type KEY_VALUE = KEY_TYPE | [SHIFTABLE_KEY, SYMBOL_KEY]
 
@@ -54,7 +58,7 @@ export class KEYBOARD_KEY {
     }
     if (isFunctionKey(this.key)) {
       // enable shift only
-      if (this.key === 'Shift')
+      if (this.key === 'ShiftLeft' || this.key === 'ShiftRight')
         this.functionable = true
       else this.functionable = false
     }
@@ -62,11 +66,24 @@ export class KEYBOARD_KEY {
   }
 }
 
-function isFunctionKey(key: any): boolean {
+export function isFunctionKey(key: any): boolean {
   return FUNC_KEY_CONST.includes(key)
 }
 
-function isShiftableKey(keyValue: KEY_VALUE): boolean {
+export function getFuncKeyCount(line: KEY_ROW) {
+  let count = 0
+  for (const key of line) {
+    if (isFunctionKey(key.key))
+      count++
+  }
+  return count
+}
+
+export function getNomalKeyCount(line: KEY_ROW) {
+  return line.length - 1 - getFuncKeyCount(line)
+}
+
+export function isShiftableKey(keyValue: KEY_VALUE): boolean {
   return !(typeof keyValue === 'string')
 }
 

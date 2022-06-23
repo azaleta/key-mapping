@@ -5,10 +5,13 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    Counter: typeof import('./src/components/Counter.vue')['default']
+    FunctionalKey: typeof import('./src/components/FunctionalKey.vue')['default']
     Header: typeof import('./src/components/Header.vue')['default']
+    KeyBoard: typeof import('./src/components/KeyBoard.vue')['default']
+    KeyBoardKey: typeof import('./src/components/KeyBoardKey.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ShiftKey: typeof import('./src/components/ShiftKey.vue')['default']
   }
 }
 
