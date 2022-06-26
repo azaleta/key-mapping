@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
     Header: typeof import('./src/components/Header.vue')['default']
     KeyBoard: typeof import('./src/components/KeyBoard.vue')['default']
     KeyBoardKey: typeof import('./src/components/KeyBoardKey.vue')['default']
+    KeyRow: typeof import('./src/components/KeyRow.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ShiftKey: typeof import('./src/components/ShiftKey.vue')['default']

@@ -1,10 +1,13 @@
 export const isShift = ref(false)
+export const mappingShift = ref(false)
 
-export const shiftKey = ref<'ShiftLeft' | 'ShiftRight' | ''>('')
+export type ShiftSide = 'ShiftLeft' | 'ShiftRight' | ''
+
+export const shiftKey = ref<ShiftSide>('')
 
 const switchShift = useToggle(isShift)
 
-export const toggleShift = (key: 'ShiftLeft' | 'ShiftRight' | '' = '') => {
+export const toggleShift = (key: ShiftSide = '') => {
   switchShift()
   shiftKey.value = key
 }

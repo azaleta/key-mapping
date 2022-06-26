@@ -1,4 +1,5 @@
 export * from './dark'
 export * from './shift'
+export * from './inputContext'
 export * from './keyboardStyle'
 export * from './keyboard/index'

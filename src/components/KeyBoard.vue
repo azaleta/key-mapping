@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import type { KEYBOARD } from '@/composables'
 
-const { keyboard } = defineProps<{
-  keyboard?: KEYBOARD
+const { keyboard, disabled = false } = defineProps<{
+  keyboard: KEYBOARD
+  disabled?: boolean
 }>()
 </script>
 
 <template>
-  <div flex="~">
-    <ShiftKey side="ShiftLeft" />
-    <ShiftKey side="ShiftRight" />
-    <ShiftKey disabled side="ShiftLeft" />
-    <FunctionalKey :keydef="new KEYBOARD_KEY('Alt')" />
-    <KeyBoardKey :keystyle="getDefaultKeyStyle()" :keydef="new KEYBOARD_KEY('A')" />
-    <KeyBoardKey :keystyle="getDefaultKeyStyle()" :keydef="new KEYBOARD_KEY('S')" />
-    <KeyBoardKey :keystyle="getDefaultKeyStyle()" :keydef="new KEYBOARD_KEY(['1', '!'])" />
+  <div>
+    <KeyRow v-for="row, idx in keyboard.rows" :key="idx" :row="row" :row-index="idx" :disabled="disabled" />
   </div>
 </template>
 

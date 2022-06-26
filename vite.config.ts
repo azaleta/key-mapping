@@ -50,6 +50,7 @@ export default defineConfig({
         shortcuts: {
           'key-hover-base': 'hover-bg-sky500/50 dark:hover-bg-sky500',
           'key-active-base': 'bg-sky500/50 dark:bg-sky500',
+          'key-mapping-base': 'bg-yellow500/50 dark:bg-yellow500',
         },
       },
     ),
