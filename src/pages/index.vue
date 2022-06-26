@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { useEventListener } from '@vueuse/core'
+import type { ShiftSide } from '@/composables'
 import { clickedKey } from '@/composables'
 
 function keyDown(e: KeyboardEvent) {
+  e.preventDefault()
   if (e.key === 'Shift') {
-    e.preventDefault()
     if (isShift.value)
       return
-    toggleShift(e.code as 'ShiftLeft' | 'ShiftRight')
+    toggleShift(e.code as Exclude<ShiftSide, ''>)
   }
-  else { clickedKey.value = e.key.toUpperCase() }
+  else {
+    if (clickedKey.value === e.key.toUpperCase())
+      return
+    clickedKey.value = e.key.toUpperCase()
+  }
 }
 
 function keyUp(e: KeyboardEvent) {

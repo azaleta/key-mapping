@@ -37,7 +37,7 @@ export class KEYBOARD_KEY {
       return ''
   }
 
-  getValue(shift = false): string {
+  getValue(shift = false) {
     if (typeof this.keyValue === 'string')
       return this.keyValue
 

@@ -1,11 +1,12 @@
 <script setup lang="ts">
+import type { PropType } from 'vue'
 import type { KEY_ROW } from '@/composables'
 
-const { row, rowIndex, disabled } = defineProps<{
-  row: KEY_ROW
-  rowIndex: number
-  disabled: boolean
-}>()
+const { row, rowIndex, disabled } = defineProps({
+  row: { type: Object as PropType<KEY_ROW>, required: true },
+  rowIndex: { type: Number, required: true },
+  disabled: { type: Boolean, required: true },
+})
 
 function getKeyStyleHelper(keyIndex: number) {
   return getKeyStyle(row, keyIndex, rowIndex)

@@ -1,33 +1,40 @@
 <script setup lang="ts">
+import type { PropType } from 'vue'
 import type { KEYBOARD_KEY, KEY_STYLE } from '@/composables'
-const { keydef, keystyle = getDefaultKeyStyle(), disabled = false } = defineProps<{
-  keydef: KEYBOARD_KEY
-  keystyle?: KEY_STYLE
-  disabled: boolean
-}>()
+const { keydef, keystyle = getDefaultKeyStyle(), disabled = false } = defineProps({
+  keydef: { type: Object as PropType<KEYBOARD_KEY>, required: true },
+  keystyle: { type: Object as PropType<KEY_STYLE>, required: false },
+  disabled: { type: Boolean, required: false },
+})
 
 const clicked = $computed(() => {
-  if (keydef.getValue() === clickedKey.value) {
-    mappingShift.value = false
+  if (keydef.getValue() === clickedKey.value || keydef.getValue(true) === clickedKey.value)
     return true
-  }
-  if (keydef.getValue(true) === clickedKey.value) {
-    mappingShift.value = true
-    return true
-  }
-  mappingShift.value = false
   return false
 })
 
 const showValue = $computed(() => disabled ? keydef.getValue() : keydef.getValue(isShift.value))
 
 function onClick() {
-  if (clickedKey.value === keydef.key) {
+  if (clickedKey.value === keydef.key || clickedKey.value === keydef.getValue(true)) {
     clickedKey.value = ''
     mappingShift.value = false
   }
-  else { clickedKey.value = keydef.key }
+  else {
+    clickedKey.value = isShift.value ? keydef.getValue(true) : keydef.getValue()
+  }
 }
+
+watchEffect(() => {
+  if (disabled && keydef.getValue(true) === clickedKey.value)
+    mappingShift.value = !!isShiftableKey(keydef.keyValue)
+})
+
+// in somecase, you click(use mouse) keyboard (Shift +1) then click shift again to disable shift
+emitter.on(SHIFT_PRESS_EVENT, () => {
+  if (!disabled && (clickedKey.value === keydef.key || clickedKey.value === keydef.getValue(true)))
+    clickedKey.value = keydef.getValue(isShift.value)
+})
 </script>
 
 <template>

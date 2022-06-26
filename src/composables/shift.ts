@@ -10,5 +10,6 @@ const switchShift = useToggle(isShift)
 export const toggleShift = (key: ShiftSide = '') => {
   switchShift()
   shiftKey.value = key
+  emitter.emit(SHIFT_PRESS_EVENT)
 }
 
