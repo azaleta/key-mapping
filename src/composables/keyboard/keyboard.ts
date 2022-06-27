@@ -80,7 +80,7 @@ export function getFuncKeyCount(line: KEY_ROW) {
 }
 
 export function getNomalKeyCount(line: KEY_ROW) {
-  return line.length - 1 - getFuncKeyCount(line)
+  return line.length - getFuncKeyCount(line)
 }
 
 export function isShiftableKey(key: KEYBOARD_KEY): boolean {

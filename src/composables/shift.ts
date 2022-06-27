@@ -1,5 +1,4 @@
 export const isShift = ref(false)
-export const mappingShift = ref(false)
 
 export type ShiftSide = 'ShiftLeft' | 'ShiftRight' | ''
 

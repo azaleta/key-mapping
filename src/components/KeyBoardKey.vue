@@ -31,6 +31,11 @@ watchEffect(() => {
     mappingShift.value = !!isShiftableKey(keydef)
     mappingKey.value = keydef.key
   }
+
+  if (disabled && keydef.getValue() === clickedKey.value) {
+    mappingShift.value = false
+    mappingKey.value = keydef.key
+  }
 })
 
 // in somecase, you click(use mouse) keyboard (Shift +1) then click shift again to disable shift

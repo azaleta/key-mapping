@@ -4,7 +4,7 @@ const KEY_HEIGHT = 40
 const NORMAL_KEY_WIDTH = 40
 const KEY_MARGIN_X = 3
 const KEY_MARGIN_Y = 3
-export const KEYBOARD_WIDTH = 650
+export const KEYBOARD_WIDTH = 700
 
 export interface KEY_STYLE {
   width: number
@@ -50,6 +50,7 @@ function calcFunctionKeyWidth(line: KEY_ROW): number {
   if (line[0].key === 'Tab')
     width = width - NORMAL_KEY_WIDTH * 0.5
 
+  console.log(funKeyCount, normalKeyCount, width)
   return width
 }
 
