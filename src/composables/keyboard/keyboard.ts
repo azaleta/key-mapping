@@ -83,8 +83,8 @@ export function getNomalKeyCount(line: KEY_ROW) {
   return line.length - 1 - getFuncKeyCount(line)
 }
 
-export function isShiftableKey(keyValue: KEY_VALUE): boolean {
-  return !(typeof keyValue === 'string')
+export function isShiftableKey(key: KEYBOARD_KEY): boolean {
+  return !(typeof key.keyValue === 'string')
 }
 
 export interface KEY_MAPPING {
@@ -105,7 +105,7 @@ export class KEYBOARD {
       for (const key of row) {
         if (key.getValue() === mappingKey)
           return { presskey: key.key, shift: false }
-        if (isShiftableKey(key.key)) {
+        if (isShiftableKey(key)) {
           if (key.getValue(true) === mappingKey)
             return { presskey: key.key, shift: true }
         }
