@@ -48,6 +48,7 @@ emitter.on(SHIFT_PRESS_EVENT, () => {
         !disabled ? 'key-hover-base' : '',
         clicked && !disabled ? 'key-active-base' : '',
         clicked && disabled ? 'key-mapping-base' : '',
+        keydef.key === 'Chg' ? 'text-xs' : '',
       ]"
       :disabled="disabled"
       @click="onClick"
