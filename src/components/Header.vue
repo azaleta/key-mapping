@@ -20,13 +20,13 @@
     </div>
   </div>
   <div text="xs" pt-2 font-mono bg-transparent flex="~" justify-center items-center>
-    <router-link to="/" bg-blend-color-burn border="~ rounded" text-center p-1 hover="bg-red/75 dark:bg-red text-white">
+    <router-link to="/" bg-blend-color-burn border="0 rounded" text-center p-1 hover="bg-red/75 dark:bg-red text-white">
       Mapping
     </router-link>
     <div px-2>
       |
     </div>
-    <router-link to="/handwriting" border="~ rounded" p-1 hover="bg-red/75 dark:bg-red text-white">
+    <router-link to="/handwriting" border="0 rounded" p-1 hover="bg-red/75 dark:bg-red text-white">
       HandWriting
     </router-link>
   </div>

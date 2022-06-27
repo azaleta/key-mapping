@@ -19,6 +19,7 @@ function onClick() {
   if (clickedKey.value === keydef.key || clickedKey.value === keydef.getValue(true)) {
     clickedKey.value = ''
     mappingShift.value = false
+    mappingKey.value = ''
   }
   else {
     clickedKey.value = isShift.value ? keydef.getValue(true) : keydef.getValue()
@@ -26,8 +27,10 @@ function onClick() {
 }
 
 watchEffect(() => {
-  if (disabled && keydef.getValue(true) === clickedKey.value)
+  if (disabled && keydef.getValue(true) === clickedKey.value) {
     mappingShift.value = !!isShiftableKey(keydef)
+    mappingKey.value = keydef.key
+  }
 })
 
 // in somecase, you click(use mouse) keyboard (Shift +1) then click shift again to disable shift

@@ -27,6 +27,7 @@ function keyUp(e: KeyboardEvent) {
   else {
     clickedKey.value = ''
     mappingShift.value = false
+    mappingKey.value = ''
   }
 }
 
@@ -40,16 +41,19 @@ useEventListener(window, 'keyup', (e: KeyboardEvent) => { keyUp(e) })
 </script>
 
 <template>
-  <div flex="col">
+  <div flex="col" justify-center items-center>
     <div>Eng KeyBorad</div>
     <div>
       <KeyBoard :keyboard="USA_KEYBOARD" />
     </div>
     <div mt5>
-      JPN KeyBorad
+      Jpn KeyBorad
     </div>
     <div>
       <KeyBoard :keyboard="JAPAN_KEYBOARD" :disabled="true" />
+    </div>
+    <div pt5>
+      <InputContext />
     </div>
   </div>
   <Teleport to="body">
