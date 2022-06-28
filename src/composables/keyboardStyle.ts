@@ -50,7 +50,6 @@ function calcFunctionKeyWidth(line: KEY_ROW): number {
   if (line[0].key === 'Tab')
     width = width - NORMAL_KEY_WIDTH * 0.5
 
-  console.log(funKeyCount, normalKeyCount, width)
   return width
 }
 
