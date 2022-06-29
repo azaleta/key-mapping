@@ -19,8 +19,8 @@ function onclick() {
       :style="getKeyBoardStyleString(keystyle)" border="~ rounded" text-xs
       :class="[
         !disabled ? 'key-hover-base' : '',
-        !disabled && isShift.value && shiftKey.value === side ? 'key-active-base' : '',
-        disabled && mappingShift.value ? 'key-mapping-base' : '',
+        !disabled && isShift && shiftKey === side ? 'key-active-base' : '',
+        disabled && mappingShift ? 'key-mapping-base' : '',
       ]"
       :disabled="disabled"
       @click="onclick"

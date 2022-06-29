@@ -7,6 +7,7 @@ import Pages from 'vite-plugin-pages'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Unocss from 'unocss/vite'
+import Inspect from 'vite-plugin-inspect'
 
 export default defineConfig({
   resolve: {
@@ -54,6 +55,10 @@ export default defineConfig({
         },
       },
     ),
+    Inspect({
+      // change this to enable inspect for debugging
+      enabled: false,
+    }),
   ],
 
   // https://github.com/vitest-dev/vitest

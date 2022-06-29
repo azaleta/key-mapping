@@ -10,14 +10,14 @@
         Your Input is:
       </div>
       <div ml3 text="sky500/50 dark:sky500" font-bold>
-        {{ clickedKey.value === '' ? ' ' : clickedKey.value }}
+        {{ clickedKey === '' ? ' ' : clickedKey }}
       </div>
       <div w-10 />
       <div text="yellow500/50 dark:yellow500" font-bold>
         Mapping Key is:
       </div>
-      <div v-if="mappingKey.value !== ''" ml3 text="yellow500/50 dark:yellow500" font-bold>
-        {{ mappingShift.value ? `Shift + ${mappingKey.value}` : mappingKey.value }}
+      <div v-if="mappingKey !== ''" ml3 text="yellow500/50 dark:yellow500" font-bold>
+        {{ mappingShift ? `Shift + ${mappingKey}` : mappingKey }}
       </div>
     </div>
   </div>
